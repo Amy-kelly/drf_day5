@@ -34,21 +34,19 @@ class UserAPIView(APIView):
         # print(group.user_set.first().username)
 
         #获取权限
-        per = Permission.objects.filter(pk=1).first()
-        print(per.name)  #Can add log entry
+        # per = Permission.objects.filter(pk=1).first()
+        # print(per.name)  #Can add log entry
         #根据权限获取用户
-        print(per.user_set.first().username)  #admin
+        # print(per.user_set.first().username)  #admin
         #根据权限获取角色
-        print(per.group_set.first())  #第一组
+        # print(per.group_set.first())  #第一组
         return APIResponse("SUCCESS")
 
 class TestPessionAPIView(APIView):
     authentication_classes = [MyAuth]
+    permission_classes = [IsAuthenticated]
     def get(self,request,*args,**kwargs):
-        permission_classes = [IsAuthenticated]
-
-        def get(self, request, *args, **kwargs):
-            return APIResponse("登录访问成功")
+        return APIResponse("登录访问成功")
 
 class UserLoginOrReadOnly(APIView):
         """
