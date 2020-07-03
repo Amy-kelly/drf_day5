@@ -50,7 +50,7 @@ class TestPessionAPIView(APIView):
         def get(self, request, *args, **kwargs):
             return APIResponse("登录访问成功")
 
-    class UserLoginOrReadOnly(APIView):
+class UserLoginOrReadOnly(APIView):
         """
         登录可写  游客只读
         """
@@ -63,8 +63,7 @@ class TestPessionAPIView(APIView):
 
         def post(self, request, *args, **kwargs):
             return APIResponse("写操作")
-
-    class SendMsgAPIView(APIView):
+class SendMsgAPIView(APIView):
         throttle_classes = [SendMsgRate]
 
         def get(self, request, *args, **kwargs):
